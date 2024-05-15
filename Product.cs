@@ -10,5 +10,12 @@ namespace ControleEstoquePOO
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+
+        public Product(string name, string description, float price)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.Price = price;
+        }
     }
 }

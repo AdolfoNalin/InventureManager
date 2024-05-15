@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ControleEstoquePOO
 {
-    public class Ebook : Product
+    public class Ebook : Product, IStock
     {
         public string Author { get; set; }
         public byte Memory { get; set; }
@@ -18,6 +18,21 @@ namespace ControleEstoquePOO
             this.Author = author;
             this.Price = price;
             this.Memory = memory;
+        }
+
+        public void GetInformationProduct()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddInput()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddOutput()
+        {
+            throw new NotImplementedException();
         }
     }
 }

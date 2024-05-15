@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace ControleEstoquePOO
 {
-    public class PhysicalProduct : Product
+    public class PhysicalProduct : Product,IStock
     {
         public float Freightage { get; set; }
-        public int Stock {get; set; }
+        public int Stock {get; private set; }
 
         public PhysicalProduct(string name, string description, float price, float freightage) : base(name, description, price)
         {
@@ -16,6 +16,21 @@ namespace ControleEstoquePOO
             this.Description = description;
             this.Price = price;
             this.Freightage = freightage;
+        }
+
+        public void GetInformationProduct()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddInput()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddOutput()
+        {
+            throw new NotImplementedException();
         }
     }
 }

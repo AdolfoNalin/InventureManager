@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ControleEstoquePOO
 {
-    public class CoursoClass : Product
+    public class CoursoClass : Product,IStock
     {
         public string Author { get; set; }
         public int Vacancies {get; private set;}
@@ -15,6 +15,21 @@ namespace ControleEstoquePOO
             this.Description = description;
             this.Author = author;
             this.Price = price;
+        }
+
+        public void GetInformationProduct()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddInput()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddOutput()
+        {
+            throw new NotImplementedException();
         }
     }
 }
