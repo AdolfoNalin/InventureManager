@@ -7,6 +7,8 @@ namespace ControleEstoquePOO
 {
     public interface IStock
     {
-        
+        void GetInformationProduct();
+        void AddInput();
+        void AddOutput();
     }
 }

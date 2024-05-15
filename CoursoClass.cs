@@ -19,7 +19,8 @@ namespace ControleEstoquePOO
 
         public void GetInformationProduct()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Name: {this.Name}\nDescription: {this.Description}" +
+            $"\nPrice: {this.Price}\nFreightage: {this.Author}\nRestant Vacancies: {this.Vacancies}");
         }
 
         public void AddInput()

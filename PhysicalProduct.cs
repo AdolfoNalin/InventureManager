@@ -20,7 +20,7 @@ namespace ControleEstoquePOO
 
         public void GetInformationProduct()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Name: {this.Name}\nDescription: {this.Description}\nPrice: {this.Price}\nFreightage: {this.Freightage}\nStock: {this.Stock}");
         }
 
         public void AddInput()
