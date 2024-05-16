@@ -9,36 +9,35 @@ namespace ControleEstoquePOO
 {
     public class Program
     {
-        enum menu {Consult = 1, Add, Delete, Imput, Output,Exit = 0}
+        
         static void Main(string[] args)
         {
-            Console.WriteLine("=====Welcome-to-Inventure-Manager=====");
-
-            Console.WriteLine("*****Choose-an-option*****");
-            Console.WriteLine($"1-{menu.Consult}, 2-{menu.Add}, 3-{menu.Delete}, 4-{menu.Imput}, 5-{menu.Output}, 0-{menu.Exit}");
-            int num = int.Parse(Console.ReadLine());
-            menu imput = (menu) num;
-
-            while(!((menu) num == menu.Exit))
+            int num = 0;
+            do
             {
-                switch(imput)
+                num = Menu.PresentationMenu();
+                Menu.menu input = (Menu.menu) num;
+                switch(input)
                 {
-                    case menu.Consult:
+                    case Menu.menu.Consult:
                     Console.WriteLine("the function are working");
                         break;
-                    case menu.Add:
+                    case Menu.menu.Save:
                         break;
-                    case menu.Delete:
+                    case Menu.menu.Delete:
                         break;
-                    case menu.Imput:
+                    case Menu.menu.Imput:
+                        Menu.InsertPhysicalProductMenu();
                         break;
-                    case menu.Output:
+                    case Menu.menu.Output:
                         break;
                     default:
                         Console.WriteLine("Please, Choose a correct option!");
                         break;
                 }
+                Console.Clear();
             }
+            while(!((Menu.menu) num == Menu.menu.Exit));
         }
     }
 }

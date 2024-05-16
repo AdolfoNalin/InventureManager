@@ -8,10 +8,10 @@ namespace ControleEstoquePOO
     public class Ebook : Product, IStock
     {
         public string Author { get; set; }
-        public byte Memory { get; set; }
+        public float Memory { get; set; }
         public int Sales { get; private set; }
 
-        public Ebook(string name, string description, string author, float price, byte memory) : base(name, description, price)
+        public Ebook(string name, string description, string author, float price, float memory) : base(name, description, price)
         {
             this.Name = name;
             this.Description = description;
