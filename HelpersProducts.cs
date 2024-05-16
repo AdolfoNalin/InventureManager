@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ControleEstoquePOO
 {
     public class HelpersProducts
     {
+        
         static List<IStock> stocks = new List<IStock>();
         #region  Insert into CC 
         public static void InserCoursoClass()
@@ -24,6 +27,7 @@ namespace ControleEstoquePOO
            price = float.Parse(Console.ReadLine());
            CoursoClass cc = new CoursoClass(name, description,author, price);
            stocks.Add(cc);
+           Save();
         }
         #endregion
 
@@ -46,10 +50,12 @@ namespace ControleEstoquePOO
 
            Ebook eb = new Ebook(name, description, author, price,memory);
            stocks.Add(eb);
+           Save();
         }
         #endregion
 
         #region Insert into PP
+        
         public static void InserPhysicalProduct()
         {
             string name,description;
@@ -65,6 +71,30 @@ namespace ControleEstoquePOO
             freightage = float.Parse(Console.ReadLine());
             PhysicalProduct pp = new PhysicalProduct(name, description, price, freightage);
             stocks.Add(pp);
+
+            Save();
+        }
+        #endregion
+
+        #region SaveProduct
+        private static void Save()
+        {
+            try
+            {
+                FileStream fs = new FileStream("product.dat", FileMode.OpenOrCreate);
+                #pragma warning disable SYSLIB0011 // O tipo ou membro é obsoleto
+                BinaryFormatter bf = new BinaryFormatter();
+                #pragma warning restore SYSLIB0011 // O tipo ou membro é obsoleto
+
+                bf.Serialize(fs, stocks);
+
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Aconteceu um erro do tipo {ex.Message} com o caminho para {ex.StackTrace}");
+            }
+            
         }
         #endregion
     }

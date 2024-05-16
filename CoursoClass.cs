@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace ControleEstoquePOO
 {
+    [Serializable]
     public class CoursoClass : Product,IStock
     {
         public string Author { get; set; }

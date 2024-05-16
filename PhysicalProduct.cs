@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace ControleEstoquePOO
 {
+    [Serializable]
     public class PhysicalProduct : Product,IStock
     {
         public float Freightage { get; set; }
