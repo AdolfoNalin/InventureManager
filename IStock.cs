@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace ControleEstoquePOO
 {
+    
     public interface IStock
     {
         void GetInformationProduct();

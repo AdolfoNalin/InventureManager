@@ -22,6 +22,7 @@ namespace ControleEstoquePOO
         {
             Console.WriteLine($"Name: {this.Name}\nDescription: {this.Description}" +
             $"\nPrice: {this.Price}\nFreightage: {this.Author}\nRestant Vacancies: {this.Vacancies}");
+            Console.WriteLine("===============================");
         }
 
         public void AddInput()

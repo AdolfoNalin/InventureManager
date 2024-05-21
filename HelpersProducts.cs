@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace ControleEstoquePOO
 {
     public class HelpersProducts
     {
-        
         static List<IStock> stocks = new List<IStock>();
+
         #region  Insert into CC 
         public static void InserCoursoClass()
         {
@@ -81,20 +83,68 @@ namespace ControleEstoquePOO
         {
             try
             {
-                FileStream fs = new FileStream("product.dat", FileMode.OpenOrCreate);
-                #pragma warning disable SYSLIB0011 // O tipo ou membro é obsoleto
-                BinaryFormatter bf = new BinaryFormatter();
-                #pragma warning restore SYSLIB0011 // O tipo ou membro é obsoleto
+#pragma warning disable SYSLIB0011 // O tipo ou membro é obsoleto
+    
+                var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011 // O tipo ou membro é obsoleto
+                FileStream ms = new FileStream("product.dat", FileMode.OpenOrCreate);
 
-                bf.Serialize(fs, stocks);
+                bf.Serialize(ms, stocks);
+                
+                ms.Close();
 
-                fs.Close();
+                Console.WriteLine("O produto foi salvo com sucesso!"); 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Aconteceu um erro do tipo {ex.Message} com o caminho para {ex.StackTrace}");
             }
             
+        }
+        #endregion
+
+        #region LoadingProducts
+        public static void Loanding()
+        {
+            try
+            {
+                using (var stream = new FileStream("product.dat", FileMode.OpenOrCreate))
+                {
+                    #pragma warning disable SYSLIB0011 // O tipo ou membro é obsoleto
+
+                    BinaryFormatter bf = new BinaryFormatter();
+
+                    #pragma warning restore SYSLIB0011 // O tipo ou membro é obsoleto
+
+                    stocks = (List<IStock>) bf.Deserialize(stream);
+
+                    stream.Close();
+                }
+
+                if(stocks == null)
+                {
+                    stocks = new List<IStock>();
+                }
+                
+            }
+            catch (System.Exception ex)
+            {
+                stocks = new List<IStock>();
+                Console.WriteLine($"Aconteceu um erro do tipo {ex.Message} com o caminho para {ex.StackTrace}");
+            }
+            
+        }
+        #endregion
+
+        #region List
+        public static void List()
+        {
+            foreach(IStock s in stocks)
+            {
+                s.GetInformationProduct();
+            }
+
+            Console.ReadLine();
         }
         #endregion
     }

@@ -12,6 +12,7 @@ namespace ControleEstoquePOO
         
         static void Main(string[] args)
         {
+            HelpersProducts.Loanding();
             int num = 0;
             do
             {
@@ -20,7 +21,7 @@ namespace ControleEstoquePOO
                 switch(input)
                 {
                     case Menu.menu.Consult:
-                    Console.WriteLine("the function are working");
+                        HelpersProducts.List();
                         break;
                     case Menu.menu.Save:
                         break;
